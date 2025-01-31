@@ -11,7 +11,7 @@
 	aliases = {
 		pu = "push";
 		co = "checkout";
-		cm = "commit";
+		cm = "commit -m";
 	};
   	enable = true;
 	userEmail = "51009168+cockburncolin@users.noreply.github.com";
