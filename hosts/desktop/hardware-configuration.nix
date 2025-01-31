@@ -12,6 +12,9 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+	# Fix F keys on QK75 keyboard
+	boot.kernelParams =  [ "hid_apple.fnmode=2" ];
+
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/cf229443-137f-4321-b9f6-fae23d83435a";

@@ -1,5 +1,6 @@
-{ config, ... }:
+{ config, inputs, ... }:
 {
+	imports = [ ./user-add.nix ];
 	boot = {
      loader = {
          efi = {
@@ -13,7 +14,13 @@
              useOSProber = true;
          };
      };
-     # Fix F keys on QK75 keyboard
-     kernelParams =  [ "hid_apple.fnmode=2" ];
- };
+	};
+
+	main-user.enable = true;
+
+	nix.gc = {
+		automatic = true;
+		dates = "weekly";
+		options = "--delete-older-than 10d";
+	};
 }

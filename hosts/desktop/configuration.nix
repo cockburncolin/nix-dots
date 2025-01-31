@@ -1,37 +1,28 @@
 { config, pkgs, inputs, ... }:
 {
-	imports = [
-		./hardware-configuration.nix
-		inputs.home-manager.nixosModules.home-manager
-	];
+	imports = [ ./hardware-configuration.nix ];
 	
-	# Fix F keys on QK75 keyboard
-	boot.kernelParams =  [ "hid_apple.fnmode=2" ];
-
-	main-user.enable = true;
-	main-user.userName = "user";
-
-	home-manager = {
-		backupFileExtension = "bak";
-		extraSpecialArgs = { inherit inputs; };
-		users = {
-			"user" = import ../../modules/home-config.nix;
-		};
-	};
  
 	time.timeZone = "America/Vancouver";
   
 	i18n.defaultLocale = "en_CA.UTF-8";
   
-	services.xserver.enable = true;
-  
-	services.xserver.displayManager.lightdm.enable = true;
-	services.xserver.desktopManager.budgie.enable = true;
-  
-	services.xserver.xkb = {
-		layout = "us";
-    	variant = "";
+	services.xserver =  {
+		enable = true;
+		videoDrivers = [ "amdgpu" ];
+		displayManager.lightdm.enable = true;
+		desktopManager.budgie.enable = true;
+
+		xkb = {
+			layout = "us";
+				variant = "";
+		};
 	};
+  
+	main-user.userName = "user";
+
+	# OpenGL for steam
+	hardware.opengl.enable = true;
 
 	services.printing.enable = true;
 	hardware.bluetooth.enable = false;

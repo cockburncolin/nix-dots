@@ -5,7 +5,7 @@
 			enable = lib.mkEnableOption "enable user module";
 
 			userName = lib.mkOption {
-				default = "user";
+				default = "colin";
 				description = ''
 				  username
 				'';
@@ -17,9 +17,17 @@
 		users.users.${config.main-user.userName} = {
 			isNormalUser = true;
 			initialPassword = "P@ssw0rd";
-			description = "main user";
+			description = "Colin Cockburn";
 			extraGroups = [ "networkmanager" "wheel" ];
 			shell = pkgs.zsh;
+		};
+
+		home-manager = {
+			backupFileExtension = "bak";
+			extraSpecialArgs = { inherit inputs; };
+			users = {
+				"${config.main-user.userName}" = import ../home-config.nix;
+			};
 		};
 	};
 }
