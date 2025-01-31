@@ -15,10 +15,10 @@
 		backupFileExtension = "bak";
 		extraSpecialArgs = { inherit inputs; };
 		users = {
-			"user" = import ./home.nix;
+			"user" = import ../../modules/home-config.nix;
 		};
 	};
-  
+ 
 	time.timeZone = "America/Vancouver";
   
 	i18n.defaultLocale = "en_CA.UTF-8";

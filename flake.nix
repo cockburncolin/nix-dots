@@ -18,6 +18,7 @@
 			./modules/system/base-uefi.nix
 			./modules/applications/full.nix
 			./hosts/desktop/configuration.nix
+			./modules/system/user-add.nix
 		  ];
 		};
 	  };

@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 {
-	imports = [ ./x-apps ];
+	imports = [ ./x-apps.nix ];
 
-	programs = {
-		handbrake.enabled = true;
-		libaacs.enabled = true;
-		libbluray.enabled = true;
-		steam.enabled = true;
-	};
+	environment.systemPackages = with pkgs; [
+		handbrake
+		libaacs
+		libbluray
+		steam
+	];
 }

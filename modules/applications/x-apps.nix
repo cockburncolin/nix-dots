@@ -14,13 +14,15 @@
 	};
 
 	programs = { 
-		firefox.enabled = true;
-		mpv.enabled = true;
-		yt-dlp.enabled = true;
 
 		neovim = {
 		  enable = true;
 		  defaultEditor = true;
 	  };
 	};
+	environment.systemPackages = with pkgs; [
+		firefox
+		mpv
+		yt-dlp
+	];
 }

@@ -1,3 +1,4 @@
+# Applications that all computers should have no matter what
 { config, pkgs, ... }:
 {
 	nixpkgs.config.allowUnfree = true;
@@ -8,13 +9,16 @@
 		networkmanager.enable = true;
 	};
 
-	programs = {
-		efibootmgr.enable = true;
-		git.enable = true;
-		neofetch.enable = true;
-		wget.enable = true;
-		zsh.enable = true;
-	};
+	programs.zsh.enable = true;
+
+	environment.systemPackages = with pkgs; [
+		efibootmgr
+		fzf
+		git
+		neofetch
+		tree
+		wget
+	];
 
 	security.rtkit.enable = true;
 }
