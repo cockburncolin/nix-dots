@@ -1,8 +1,6 @@
 { config, pkgs, inputs, ... }:
 {
 	imports = [
-		./base.nix
-		./fonts.nix
 	];
 
 	services.pipewire = {
@@ -14,12 +12,12 @@
 	};
 
 	programs = { 
-
 		neovim = {
 		  enable = true;
 		  defaultEditor = true;
 	  };
 	};
+
 	environment.systemPackages = with pkgs; [
 		firefox
 		mpv

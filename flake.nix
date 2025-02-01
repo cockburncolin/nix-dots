@@ -2,27 +2,32 @@
   description = "Colin's config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
 		stylix = {
-			url = "github:danth/stylix/release-24.11";
+			url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
 		};
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = {
+			default = nixpkgs.lib.nixosSystem {
+				specialArgs = {inherit inputs;};
+				modules = [
+				./hosts/default/configuration.nix
+				inputs.home-manager.nixosModules.default
+				];
+			};
 			desktop = nixpkgs.lib.nixosSystem {
 				specialArgs = {inherit inputs;};
 				modules = [
 				./hosts/desktop/configuration.nix
-				./modules/applications/games-x.nix
-				./modules/system/base-uefi.nix
 				inputs.home-manager.nixosModules.default
 				];
 			};
@@ -31,8 +36,7 @@
 				specialArgs = {inherit inputs;};
 				modules = [
 				./hosts/laptop/configuration.nix
-				./modules/applications/x-apps.nix
-				./modules/system/base-uefi.nix
+				inputs.home-manager.nixosModules.default
 				];
 			};
 	  };
