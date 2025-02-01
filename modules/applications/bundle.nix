@@ -2,11 +2,13 @@
 {
 	imports = [
 		./games/base.nix
+		./editors/base.nix
 		./shells/base.nix
+		./browsers/base.nix
 		./utils/base.nix
+		./wm/bundle.nix
 	];
 
-	config.games.enable = lib.mkDefault false;
 
 	config = {
 		nixpkgs.config.allowUnfree = true;
@@ -16,15 +18,14 @@
 		security.rtkit.enable = true;
 
 		# Programs that should be installed on everything no matter what
-		networking = {
-			networkmanager.enable = true;
-		};
+		networking.networkmanager.enable = true;
 
 		environment.systemPackages = with pkgs; [
 			efibootmgr
 			fzf
 			git
 			neofetch
+			ranger
 			tree
 			wget
 		];
