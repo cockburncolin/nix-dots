@@ -21,13 +21,5 @@
 			extraGroups = [ "networkmanager" "wheel" ];
 			shell = pkgs.zsh;
 		};
-
-		home-manager = {
-			backupFileExtension = "bak";
-			extraSpecialArgs = { inherit inputs; };
-			users = {
-				"${config.main-user.userName}" = import ../home-config.nix;
-			};
-		};
 	};
 }

@@ -2,5 +2,5 @@
 {
 	imports = [ ./zsh.nix ];
 
-	config.zsh.enable = lib.mkDefault true;
+	config.shells.zsh.enable = lib.mkDefault true;
 }
