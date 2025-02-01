@@ -1,9 +1,8 @@
 {
 	imports = [
+		./applications/bundle.nix
 		./fonts/bundle.nix
-		./games/bundle.nix
-		./shells/bundle.nix
 		./system/bundle.nix
-		./utils/bundle.nix
+		./home/home-config.nix
 	];
 }

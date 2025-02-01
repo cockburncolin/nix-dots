@@ -1,10 +1,10 @@
 { config, lib, ... }:
 {
 	options = {
-		x11.budgie.enable = lib.mkEnableOption "enable budgie desktop-environment";
+		x11.de.budgie.enable = lib.mkEnableOption "enable budgie desktop-environment";
 	};
 
-	config = lib.mkIf config.x11.budgie.enable {
+	config = lib.mkIf config.x11.de.budgie.enable {
 		services.xserver =  {
 			enable = true;
 			videoDrivers = [ "amdgpu" ];

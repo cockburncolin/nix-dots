@@ -1,13 +1,8 @@
-{ config, libs, pkgs, ... }:
 {
 	imports = [
+		./base-system.nix
 		./uefi.nix
 		./user-add.nix
 	];
 
-	nix.gc = {
-		automatic = true;
-		dates = "weekly";
-		options = "--delete-older-than 10d";
-	};
 }

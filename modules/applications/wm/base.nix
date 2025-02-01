@@ -1,12 +1,14 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, lib,... }:
 {
 	imports = [
 		./x11/base.nix
 	];
 
 
-	environment.systemPackages = with pkgs; [
-		mpv
-		yt-dlp
-	];
+	config = {
+		environment.systemPackages = with pkgs; [
+			mpv
+			yt-dlp
+		];
+	};
 }

@@ -1,4 +1,4 @@
-{ config, lib, pkg, ... }:
+{ config, lib, ... }:
 {
 	options = {
 		x11.login-manager.lightdm.enable = lib.mkEnableOption "enable lightdm";

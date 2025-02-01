@@ -1,9 +1,8 @@
-{ config }:
+{ config, ... }:
 {
 	imports = [
-		./de/bundle.nix
-		./login-managers/bundle.nix
+		./de/base.nix
+		./login-managers/base.nix
 	];
 
-	config.x11.login-managers.lightdm.enable = lib.mkDefault true;
 }

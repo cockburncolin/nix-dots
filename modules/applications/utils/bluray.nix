@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-	option = {
+	options = {
 		utils.bluray.enable = lib.mkEnableOption "install bluray utils";
 	};
 
