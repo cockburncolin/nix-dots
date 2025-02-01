@@ -1,11 +1,15 @@
 { config, lib, pkg, ... }:
 {
 	options = {
-		utils.syncthing.enable = lib.mkEnableOption "install syncthing";
+		utils.syncthing.enable = lib.mkOption { 
+			default = false;
+			description = "install syncthing";
+			type = lib.types.bool;
+		};
 		utils.syncthing.uuid = lib.mkOption {
-			type = lib.types.str;
-			example = "1234567-89ABCDE-FGHIJKL-MNOPQRS-TUVWXYZ-abcefgh-ijklmno-pqrstuv";
 			default = "";
+			example = "1234567-89ABCDE-FGHIJKL-MNOPQRS-TUVWXYZ-abcefgh-ijklmno-pqrstuv";
+			type = lib.types.str;
 		};
 	};
 
