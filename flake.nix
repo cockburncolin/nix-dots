@@ -20,7 +20,8 @@
 				];
 			};
 
-			desktop = nixpkgs.lib.nixosSystem {
+			# desktop
+			caesar = nixpkgs.lib.nixosSystem {
 				specialArgs = {inherit inputs;};
 				system = "x86_64-linux";
 				modules = [
@@ -28,7 +29,8 @@
 				];
 			};
 
-			laptop = nixpkgs.lib.nixosSystem {
+			# laptop
+			brutus = nixpkgs.lib.nixosSystem {
 				specialArgs = {inherit inputs;};
 				system = "x86_64-linux";
 				modules = [
